@@ -1,0 +1,51 @@
+---
+# Primary Configuration
+
+bind_zones:
+  - name: nsb.local
+    type: primary
+    primaries:
+      - '10.1.2.5'
+    networks:
+      - '192.168.72'
+      - '172.22.10'
+      - '10.1.2'
+    name_servers:
+      - dns-host
+    hosts:
+      - name: nginx-lb-host
+        ip: 172.22.10.250
+        aliases:
+          - pr-apic-dpgw
+      - name: pr-apic-dpgw-fe
+        ip: 172.22.10.50
+      - name: jump-host
+        ip: 10.1.2.101
+      - name: dns-host
+        ip: 10.1.2.5
+      - name: pr-apic-mgr
+        ip: 192.168.72.11
+        aliases:
+          - '*.pr-apic-mgr'
+          - mgrreplicationprimary.apicprimary
+      - name: pr-apic-anytcs
+        ip: 192.168.72.12
+        aliases:
+          - '*.pr-apic-anytcs'
+      - name: pr-apic-devptl
+        ip: 192.168.72.13
+        aliases:
+          - '*.pr-apic-devptl'
+          - ptlreplicationprimary.apicprimary
+      - name: pr-apic-dpgw1
+        ip: 172.22.10.139
+      - name: pr-apic-dpgw2
+        ip: 172.22.10.140
+      - name: pr-apic-dpgw3
+        ip: 172.22.10.141
+      - name: pr-apic-dpgw1-fe
+        ip: 172.22.10.11
+      - name: pr-apic-dpgw2-fe
+        ip: 172.22.10.12
+      - name: pr-apic-dpgw3-fe
+        ip: 172.22.10.13

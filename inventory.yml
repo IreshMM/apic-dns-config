@@ -1,0 +1,7 @@
+---
+nameservers:
+  hosts:
+    dns-host-active:
+      ansible_host: localhost
+      ansible_user: root
+      ansible_port: 2222
