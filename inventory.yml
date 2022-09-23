@@ -5,3 +5,7 @@ nameservers:
       ansible_host: localhost
       ansible_user: root
       ansible_port: 2222
+    dns-host-passive:
+      ansible_host: localhost
+      ansible_user: root
+      ansible_port: 2224

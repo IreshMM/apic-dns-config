@@ -1,7 +1,7 @@
 ---
 - name: Assign bind role to nameservers
   gather_facts: true
-  hosts: dns-host-primary
+  hosts: nameservers
 
   roles:
     - role: "bertvv.bind"
