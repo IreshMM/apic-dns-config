@@ -49,3 +49,8 @@ bind_zones:
         ip: 172.23.10.12
       - name: pr-apic-dpgw3-fe
         ip: 172.23.10.13
+
+      - name: mgrreplicationprimary.apicprimary
+        ip: 192.168.72.11
+      - name: ptlreplicationprimary.apicprimary
+        ip: 192.168.72.13
