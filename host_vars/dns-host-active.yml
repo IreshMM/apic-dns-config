@@ -62,15 +62,15 @@ bind_zones:
         ip: 10.1.4.101
       - name: dr-apic-mgr
         ip: 192.168.172.11
-        aliases:
+        # aliases:
           # - '*.mgmt'
       - name: dr-apic-anytcs
         ip: 192.168.172.12
-        aliases:
+        # aliases:
           # - '*.analyt'
       - name: dr-apic-devptl
         ip: 192.168.172.13
-        aliases:
+        # aliases:
           # - '*.port'
       - name: dr-apic-dpgw1
         ip: 172.23.10.139
