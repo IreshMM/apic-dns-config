@@ -13,7 +13,8 @@ bind_listen_ipv6:
 bind_acls:
   - name: acl1
     match_list:
-      - 10.11.0.0/16
+      - 10.1.2.5/32
+      - 10.1.4.5/32
 bind_forwarders:
   - '8.8.8.8'
   - '8.8.4.4'
