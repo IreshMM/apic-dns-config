@@ -2,55 +2,11 @@
 # Passive Configuration
 
 bind_zones:
-  - name: nsb.local
-    type: primary
+  - name: apic.nsb.local
+    type: secondary
     primaries:
-      - '10.1.4.5'
+      - '10.1.2.5'
     networks:
-      - '192.168.172'
-      - '172.23.10'
-      - '10.1.4'
-    name_servers:
-      - dns-host
-    hosts:
-      - name: nginx-lb-host
-        ip: 172.23.10.250
-        aliases:
-          - pr-apic-dpgw
-      - name: pr-apic-dpgw-fe
-        ip: 172.23.10.50
-      - name: jump-host
-        ip: 10.1.4.101
-      - name: dns-host
-        ip: 10.1.4.5
-      - name: pr-apic-mgr
-        ip: 192.168.172.11
-        aliases:
-          - '*.pr-apic-mgr'
-          - mgrreplicationdr.apicdr
-      - name: pr-apic-anytcs
-        ip: 192.168.172.12
-        aliases:
-          - '*.pr-apic-anytcs'
-      - name: pr-apic-devptl
-        ip: 192.168.172.13
-        aliases:
-          - '*.pr-apic-devptl'
-          - ptlreplicationdr.apicdr
-      - name: pr-apic-dpgw1
-        ip: 172.23.10.139
-      - name: pr-apic-dpgw2
-        ip: 172.23.10.140
-      - name: pr-apic-dpgw3
-        ip: 172.23.10.141
-      - name: pr-apic-dpgw1-fe
-        ip: 172.23.10.11
-      - name: pr-apic-dpgw2-fe
-        ip: 172.23.10.12
-      - name: pr-apic-dpgw3-fe
-        ip: 172.23.10.13
-
-      - name: mgrreplicationprimary.apicprimary
-        ip: 192.168.72.11
-      - name: ptlreplicationprimary.apicprimary
-        ip: 192.168.72.13
+      - '192.168.72'
+      - '172.22.10'
+      - '10.1.2'

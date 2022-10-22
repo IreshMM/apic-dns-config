@@ -1,8 +1,7 @@
 ---
 # Primary Configuration
-
 bind_zones:
-  - name: nsb.local
+  - name: apic.nsb.local
     type: primary
     primaries:
       - '10.1.2.5'
@@ -11,32 +10,32 @@ bind_zones:
       - '172.22.10'
       - '10.1.2'
     name_servers:
-      - dns-host
+      - pr-dns-host.apic.nsb.local.
+      - dr-dns-host.apic.nsb.local.
     hosts:
-      - name: nginx-lb-host
+      # Active site DNS names
+      - name: pr-dns-host
+        ip: 10.1.2.5
+      - name: pr-nginx-lb-host
         ip: 172.22.10.250
         aliases:
           - pr-apic-dpgw
       - name: pr-apic-dpgw-fe
         ip: 172.22.10.50
-      - name: jump-host
+      - name: pr-jump-host
         ip: 10.1.2.101
-      - name: dns-host
-        ip: 10.1.2.5
       - name: pr-apic-mgr
         ip: 192.168.72.11
         aliases:
-          - '*.pr-apic-mgr'
-          - mgrreplicationprimary.apicprimary
+          - '*.mgmt'
       - name: pr-apic-anytcs
         ip: 192.168.72.12
         aliases:
-          - '*.pr-apic-anytcs'
+          - '*.analyt'
       - name: pr-apic-devptl
         ip: 192.168.72.13
         aliases:
-          - '*.pr-apic-devptl'
-          - ptlreplicationprimary.apicprimary
+          - '*.port'
       - name: pr-apic-dpgw1
         ip: 172.22.10.139
       - name: pr-apic-dpgw2
@@ -50,7 +49,38 @@ bind_zones:
       - name: pr-apic-dpgw3-fe
         ip: 172.22.10.13
 
-      - name: mgrreplicationdr.apicdr
+      # Passive site DNS names
+      - name: dr-dns-host
+        ip: 10.1.4.5
+      - name: dr-nginx-lb-host
+        ip: 172.23.10.250
+        aliases:
+          - dr-apic-dpgw
+      - name: dr-apic-dpgw-fe
+        ip: 172.23.10.50
+      - name: dr-jump-host
+        ip: 10.1.4.101
+      - name: dr-apic-mgr
         ip: 192.168.172.11
-      - name: ptlreplicationdr.apicdr
+        aliases:
+          # - '*.mgmt'
+      - name: dr-apic-anytcs
+        ip: 192.168.172.12
+        aliases:
+          # - '*.analyt'
+      - name: dr-apic-devptl
         ip: 192.168.172.13
+        aliases:
+          # - '*.port'
+      - name: dr-apic-dpgw1
+        ip: 172.23.10.139
+      - name: dr-apic-dpgw2
+        ip: 172.23.10.140
+      - name: dr-apic-dpgw3
+        ip: 172.23.10.141
+      - name: dr-apic-dpgw1-fe
+        ip: 172.23.10.11
+      - name: dr-apic-dpgw2-fe
+        ip: 172.23.10.12
+      - name: dr-apic-dpgw3-fe
+        ip: 172.23.10.13
