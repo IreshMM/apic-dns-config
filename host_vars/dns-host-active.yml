@@ -10,8 +10,8 @@ bind_zones:
       - '172.22.10'
       - '10.1.2'
     name_servers:
-      - pr-dns-host.apic.nsb.local.
-      - dr-dns-host.apic.nsb.local.
+      - pr-dns-host
+      - dr-dns-host
     hosts:
       # Active site DNS names
       - name: pr-dns-host
