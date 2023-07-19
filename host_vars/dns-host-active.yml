@@ -5,14 +5,14 @@ bind_zones:
     type: primary
     primaries:
       - &dns_server '10.24.1.5'
-    # networks:
-    #   - '192.168.72'
     name_servers:
       - pr-dns-host
     hosts:
       # Active site DNS names
       - name: pr-dns-host
         ip: *dns_server
+      - name: pr-sftp-backup-host
+        ip: 10.24.1.11
       - name: pr-nginx-lb-host
         ip: 172.22.8.124
         aliases:
