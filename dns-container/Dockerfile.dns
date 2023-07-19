@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+
+RUN apt update && apt install -y openssh-server
+
+RUN mkdir /root/.ssh
+
+COPY entrypoint.sh /entrypoint.sh
+
+EXPOSE 22
+
+CMD ["/entrypoint.sh"]
