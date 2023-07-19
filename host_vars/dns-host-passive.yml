@@ -1,12 +1,51 @@
 ---
-# Passive Configuration
-
+# Primary Configuration
 bind_zones:
   - name: apic.nsb.local
-    type: secondary
+    type: primary
     primaries:
-      - '10.1.2.5'
-    networks:
-      - '192.168.72'
-      - '172.22.10'
-      - '10.1.2'
+      - &dns_server '10.24.1.6'
+    # networks:
+    #   - '192.168.172'
+    name_servers:
+      - pr-dns-host
+    hosts:
+      # Active site DNS names
+      - name: pr-dns-host
+        ip: *dns_server
+      - name: pr-nginx-lb-host
+        ip: 172.23.8.124
+        aliases:
+          - pr-apic-dpgw-be
+      - name: pr-apic-dpgw-fe
+        ip: 172.23.8.60
+      - name: pr-apic-mgr
+        ip: 192.168.172.11
+        aliases:
+          - '*.mgmt'
+      - name: pr-apic-anytcs
+        ip: 192.168.172.12
+        aliases:
+          - '*.analyt'
+      - name: pr-apic-devptl
+        ip: 192.168.172.13
+        aliases:
+          - '*.port'
+      - name: pr-apic-dpgw1
+        ip: 172.23.8.76
+        aliases:
+          - pr-apic-dpgw1-be
+      - name: pr-apic-dpgw2
+        ip: 172.23.8.77
+        aliases:
+          - pr-apic-dpgw2-be
+      - name: pr-apic-dpgw3
+        ip: 172.23.8.78
+        aliases:
+          - pr-apic-dpgw3-be
+      - name: pr-apic-dpgw1-fe
+        ip: 172.23.8.11
+      - name: pr-apic-dpgw2-fe
+        ip: 172.23.8.12
+      - name: pr-apic-dpgw3-fe
+        ip: 172.23.8.13

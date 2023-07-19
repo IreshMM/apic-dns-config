@@ -4,29 +4,21 @@ bind_zones:
   - name: apic.nsb.local
     type: primary
     primaries:
-      - '10.1.2.5'
-    networks:
-      - '192.168.72'
-      - '192.168.73'
-      - '10.1.2'
-      - '192.168.172'
-      - '192.168.173'
-      - '10.1.4'
+      - &dns_server '10.24.1.5'
+    # networks:
+    #   - '192.168.72'
     name_servers:
       - pr-dns-host
-      - dr-dns-host
     hosts:
       # Active site DNS names
       - name: pr-dns-host
-        ip: 10.1.2.5
+        ip: *dns_server
       - name: pr-nginx-lb-host
-        ip: 192.168.73.250
+        ip: 172.22.8.124
         aliases:
           - pr-apic-dpgw-be
       - name: pr-apic-dpgw-fe
-        ip: 192.168.73.50
-      - name: pr-jump-host
-        ip: 10.1.2.101
+        ip: 172.22.8.60
       - name: pr-apic-mgr
         ip: 192.168.72.11
         aliases:
@@ -40,62 +32,20 @@ bind_zones:
         aliases:
           - '*.port'
       - name: pr-apic-dpgw1
-        ip: 192.168.73.139
+        ip: 172.22.8.76
         aliases:
           - pr-apic-dpgw1-be
       - name: pr-apic-dpgw2
-        ip: 192.168.73.140
+        ip: 172.22.8.77
         aliases:
           - pr-apic-dpgw2-be
       - name: pr-apic-dpgw3
-        ip: 192.168.73.141
+        ip: 172.22.8.78
         aliases:
           - pr-apic-dpgw3-be
       - name: pr-apic-dpgw1-fe
-        ip: 192.168.73.11
+        ip: 172.22.8.11
       - name: pr-apic-dpgw2-fe
-        ip: 192.168.73.12
+        ip: 172.22.8.12
       - name: pr-apic-dpgw3-fe
-        ip: 192.168.73.13
-
-      # Passive site DNS names
-      - name: dr-dns-host
-        ip: 10.1.4.5
-      - name: dr-nginx-lb-host
-        ip: 192.168.173.250
-        aliases:
-          - dr-apic-dpgw-be
-      - name: dr-apic-dpgw-fe
-        ip: 192.168.173.50
-      - name: dr-jump-host
-        ip: 10.1.4.101
-      - name: dr-apic-mgr
-        ip: 192.168.172.11
-        # aliases:
-          # - '*.mgmt'
-      - name: dr-apic-anytcs
-        ip: 192.168.172.12
-        # aliases:
-          # - '*.analyt'
-      - name: dr-apic-devptl
-        ip: 192.168.172.13
-        # aliases:
-          # - '*.port'
-      - name: dr-apic-dpgw1
-        ip: 192.168.173.139
-        aliases:
-          - dr-apic-dpgw1-be
-      - name: dr-apic-dpgw2
-        ip: 192.168.173.140
-        aliases:
-          - dr-apic-dpgw2-be
-      - name: dr-apic-dpgw3
-        ip: 192.168.173.141
-        aliases:
-          - dr-apic-dpgw3-be
-      - name: dr-apic-dpgw1-fe
-        ip: 192.168.173.11
-      - name: dr-apic-dpgw2-fe
-        ip: 192.168.173.12
-      - name: dr-apic-dpgw3-fe
-        ip: 192.168.173.13
+        ip: 172.22.8.13

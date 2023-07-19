@@ -2,8 +2,10 @@
 nameservers:
   hosts:
     dns-host-active:
-      ansible_host: 10.1.2.5
+      ansible_host: 127.0.0.1
       ansible_user: root
+      ansible_port: 2222
     dns-host-passive:
-      ansible_host: 10.1.4.5
+      ansible_host: 127.0.0.1
       ansible_user: root
+      ansible_port: 2224
